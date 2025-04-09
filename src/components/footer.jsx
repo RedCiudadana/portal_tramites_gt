@@ -9,7 +9,7 @@ export default function Footer() {
         <Box sx={{ bgcolor: '#002c4b', color: 'white', py: 4, my: 2 }}>
             <Container maxWidth="lg" sx={{ my: 4}}>
                 <Grid container spacing={4} justifyContent="space-between">
-                    <Grid item xs={12} md={4}>
+                    <Grid item xs={12} md={4} sm={12}>
                         <a href="https://redciudadana.org.gt" target="_blank" rel="noopener noreferrer">
                             <img
                                 src={Logored}
@@ -29,14 +29,14 @@ export default function Footer() {
                         </Box>
                     </Grid>
 
-                    <Grid item xs={12} md={3}>
+                    <Grid item sm={12} xs={12} md={3}>
                         <Typography variant="subtitle1" gutterBottom>Enlaces</Typography>
                         {['Inicio','Contacto'].map((text, i) => (
                             <Link href="#" key={i} underline="hover" color="inherit" display="block">{text}</Link>
                         ))}
                     </Grid>
 
-                    <Grid item xs={12} md={3}>
+                    <Grid item sm={12} xs={12} md={3}>
                         <Typography variant="subtitle1" gutterBottom>Dirección</Typography>
                         <Typography variant="body2">Zona 10, Ciudad de Guatemala</Typography>
                         <Typography variant="body2">info@redciudadana.org.gt</Typography>
