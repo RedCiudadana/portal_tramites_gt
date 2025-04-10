@@ -8,7 +8,7 @@ export default function Layout() {
   return (
     <>
       <Header />
-      <Box component="main" sx={{ minHeight: '70vh', py: 4 }}>
+      <Box component="main">
         <Outlet />
       </Box>
       <Footer />
