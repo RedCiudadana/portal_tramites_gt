@@ -14,6 +14,7 @@ import {
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link as RouterLink } from 'react-router-dom';
 import Logo from '../assets/logo.png';
+import Logoredblanco from '../assets/logoredblanco.png';
 import { useState } from 'react';
 
 export default function Header() {
@@ -32,7 +33,12 @@ export default function Header() {
     <>
       {/* Barra informativa */}
       <Box sx={{ bgcolor: '#002c4b', color: 'white', py: 1 }}>
-        <Container maxWidth="lg">
+        <Container maxWidth="lg" sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+            <img
+              src={Logoredblanco}
+              alt="Logo Red Blanco"
+              style={{ width: 25, height: 'auto' }}
+            />
           <Typography variant="body2">
             Esta es una web oficial de la Asociación Civil Red Ciudadana
           </Typography>

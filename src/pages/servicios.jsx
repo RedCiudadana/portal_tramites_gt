@@ -1,10 +1,8 @@
-// src/pages/Servicios.jsx
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import tramites from '../data/tramites.json';
 
 import {
-  Box,
   Container,
   Typography,
   Grid,
@@ -17,30 +15,42 @@ import {
 } from '@mui/material';
 
 export default function Servicios() {
-    const [page, setPage] = useState(1);
-    const [search, setSearch] = useState('');
-    const itemsPerPage = 9;
+  const [page, setPage] = useState(1);
+  const [search, setSearch] = useState('');
+  const itemsPerPage = 9;
 
-    useEffect(() => {
-        document.title = 'Servicios | Trámites de Guatemala';
-    }, []);
+  useEffect(() => {
+    document.title = 'Servicios | Trámites de Guatemala';
+  }, []);
 
-    // Filtrar por texto
-    const filteredTramites = tramites.filter((t) =>
-        t.nombre.toLowerCase().includes(search.toLowerCase())
-    );
+  const normalizeText = (text) =>
+    text
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '');
 
-    // Paginación
-    const totalPages = Math.ceil(filteredTramites.length / itemsPerPage);
-    const currentItems = filteredTramites.slice(
-        (page - 1) * itemsPerPage,
-        page * itemsPerPage
-    );
+  const filteredTramites = tramites.filter((t) =>
+    normalizeText(t.nombre).includes(normalizeText(search))
+  );
 
-    const handleSearchChange = (e) => {
-        setSearch(e.target.value);
-        setPage(1); // Reiniciar a la primera página al buscar
-    };
+  const totalPages = Math.ceil(filteredTramites.length / itemsPerPage);
+  const currentItems = filteredTramites.slice(
+    (page - 1) * itemsPerPage,
+    page * itemsPerPage
+  );
+
+  const handleSearchChange = (e) => {
+    setSearch(e.target.value);
+    setPage(1);
+  };
+
+  const location = useLocation();
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const queryParam = params.get('query') || '';
+    setSearch(queryParam);
+  }, [location.search]);
 
     return (
         <Container maxWidth="lg" sx={{ mt: 4, mb: 6 }}>
@@ -61,41 +71,49 @@ export default function Servicios() {
                 sx={{ mb: 4 }}
             />
 
-            {/* Lista de servicios */}
-            <Grid container spacing={3}>
-                {currentItems.map(({ id, nombre, descripcion, categoria }) => (
-                <Grid item xs={12} sm={6} md={4} key={id}>
-                    <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-                    <CardContent sx={{ flexGrow: 1 }}>
-                        <Typography variant="h6" fontWeight="bold" gutterBottom>
-                        {nombre}
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                        {descripcion?.slice(0, 120) || 'Descripción no disponible.'}
-                        </Typography>
-                    </CardContent>
-                    <CardActions>
-                        <Button
-                        size="small"
-                        component={Link}
-                        to={`/categoria/${categoria}/tramite/${id}`}
-                        >
-                        Ver trámite
-                        </Button>
-                    </CardActions>
-                    </Card>
+            {/* Lista de servicios o mensaje de no encontrados */}
+            {filteredTramites.length === 0 ? (
+                <Typography variant="body1" color="error">
+                No se encontraron trámites con ese criterio de búsqueda.
+                </Typography>
+            ) : (
+                <>
+                <Grid container spacing={3}>
+                    {currentItems.map(({ id, nombre, descripcion, categoria }) => (
+                    <Grid item xs={12} sm={6} md={4} key={id}>
+                        <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+                            <CardContent sx={{ flexGrow: 1 }}>
+                                <Typography variant="h6" fontWeight="bold" gutterBottom>
+                                {nombre}
+                                </Typography>
+                                <Typography variant="body2" color="text.secondary">
+                                {descripcion?.slice(0, 120) || 'Descripción no disponible.'}
+                                </Typography>
+                            </CardContent>
+                            <CardActions>
+                                <Button
+                                size="small"
+                                component={Link}
+                                to={`/categoria/${categoria}/tramite/${id}`}
+                                >
+                                Ver trámite
+                                </Button>
+                            </CardActions>
+                        </Card>
+                    </Grid>
+                    ))}
                 </Grid>
-                ))}
-            </Grid>
 
-            {/* Paginación */}
-            {totalPages > 1 && (
-                <Pagination
-                count={totalPages}
-                page={page}
-                onChange={(e, value) => setPage(value)}
-                sx={{ mt: 4, display: 'flex', justifyContent: 'center' }}
-                />
+                {/* Paginación */}
+                {totalPages > 1 && (
+                    <Pagination
+                    count={totalPages}
+                    page={page}
+                    onChange={(e, value) => setPage(value)}
+                    sx={{ mt: 4, display: 'flex', justifyContent: 'center' }}
+                    />
+                )}
+                </>
             )}
         </Container>
     );

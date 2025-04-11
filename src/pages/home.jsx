@@ -1,12 +1,13 @@
 // src/pages/Home.jsx
-import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState  } from 'react';
+import { Link, useNavigate  } from 'react-router-dom';
 import tramites from '../data/tramites.json';
 import Sliderfondo from '../assets/home/sliderfondo.png';
 import Sliderdown from '../assets/home/sliderdown.png';
 
 import {
     Box,
+    TextField,
     Container,
     Typography,
     Grid,
@@ -47,6 +48,7 @@ const iconMap = {
     'Seguridad': <SecurityIcon fontSize="large" />,
 };  
 
+
 export default function Home() {
     useEffect(() => {
         document.title = 'Inicio | Trámites de Guatemala';
@@ -54,7 +56,17 @@ export default function Home() {
 
     const categorias = [...new Set(tramites.map(t => t.categoria))];
     const destacados = tramites.slice(0, 4); 
-    const masConsultados = tramites.slice(4, 10); 
+    const masConsultados = tramites.slice(4, 12); 
+
+    const [query, setQuery] = useState('');
+    const navigate = useNavigate();
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (query.trim()) {
+            navigate(`/servicios?query=${encodeURIComponent(query)}`);
+        }
+    };
     
     return (
         <>
@@ -73,7 +85,7 @@ export default function Home() {
                 }}
             >
                 <Container maxWidth="md">
-                    <Typography variant="h3" component="h1" gutterBottom sx={{ fontWeight: 'bold' }}>
+                    <Typography variant="h3" component="h1" gutterBottom sx={{ fontWeight: 'bold', color: 'rgba(255,255,255,1)' }}>
                         Plataforma de trámites de Guatemala
                     </Typography>
                     <Typography variant="h6" sx={{ color: 'rgba(255,255,255,0.9)' }}>
@@ -88,6 +100,42 @@ export default function Home() {
             </Box>
         
             {/* CONTENIDO PRINCIPAL */}
+
+            <Box sx={{ backgroundColor: '#d8e5ed', p: 4, mb:4 }}>
+                <Container maxWidth="lg" sx={{ mt: 4, mb: 6,  }}>
+                    <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
+                        <Typography variant="h5" fontWeight="bold">
+                        Busca un servicio
+                        </Typography>
+                    </Box>
+                    <Box
+                        component="form"
+                        onSubmit={handleSubmit}
+                        sx={{
+                            display: 'flex',
+                            flexDirection: { xs: 'column', sm: 'row' },
+                            gap: 2,
+                            mb: 4,
+                        }}
+                        >
+                        <TextField
+                            label="Buscar servicio"
+                            variant="outlined"
+                            value={query}
+                            onChange={(e) => setQuery(e.target.value)}
+                            sx={{ width: { xs: '100%', sm: '80%' } }}
+                        />
+                        <Button
+                            type="submit"
+                            variant="contained"
+                            sx={{ width: { xs: '100%', sm: '20%', backgroundColor: "#02324F" } }}
+                        >
+                            Buscar
+                        </Button>
+                    </Box>
+                </Container>
+            </Box>
+
             <Container maxWidth="lg" sx={{ mt: 4, mb: 6 }}>
                 {/* SECTORES */}
                 <Box mb={6}>
@@ -139,40 +187,45 @@ export default function Home() {
                         ))}
                     </Grid>
                 </Box>
+            </Container>
 
-        
-                {/* SERVICIOS DESTACADOS */}
-                <Box mb={6}>
-                    <Typography variant="h5" gutterBottom>
-                        Servicios destacados
-                    </Typography>
-                    <Grid container spacing={3}>
-                        {destacados.map((tramite) => (
-                        <Grid item xs={12} sm={6} md={3} key={tramite.id}>
-                            <Card>
-                            <CardContent>
-                                <Typography variant="subtitle1" fontWeight="bold">
-                                {tramite.nombre}
-                                </Typography>
-                                <Typography variant="body2" color="text.secondary">
-                                {tramite.descripcion?.slice(0, 80) || 'Descripción no disponible...'}
-                                </Typography>
-                            </CardContent>
-                            <CardActions>
-                                <Button
-                                size="small"
-                                component={Link}
-                                to={`/categoria/${tramite.categoria}/tramite/${tramite.id}`}
-                                >
-                                Realizar trámite
-                                </Button>
-                            </CardActions>
-                            </Card>
+            <Box sx={{ backgroundColor: '#d8e5ed', p: 4, mb:4 }}>
+                <Container maxWidth="lg" sx={{ mt: 4, mb: 6,  }}>
+                    {/* SERVICIOS DESTACADOS */}
+                    <Box mb={6}>
+                        <Typography variant="h5" gutterBottom>
+                            Servicios destacados
+                        </Typography>
+                        <Grid container spacing={3}>
+                            {destacados.map((tramite) => (
+                            <Grid item xs={12} sm={6} md={3} key={tramite.id}>
+                                <Card>
+                                <CardContent>
+                                    <Typography variant="subtitle1" fontWeight="bold">
+                                    {tramite.nombre}
+                                    </Typography>
+                                    <Typography variant="body2" color="text.secondary">
+                                    {tramite.descripcion?.slice(0, 80) || 'Descripción no disponible...'}
+                                    </Typography>
+                                </CardContent>
+                                <CardActions>
+                                    <Button
+                                    size="small"
+                                    component={Link}
+                                    to={`/categoria/${tramite.categoria}/tramite/${tramite.id}`}
+                                    >
+                                    Realizar trámite
+                                    </Button>
+                                </CardActions>
+                                </Card>
+                            </Grid>
+                            ))}
                         </Grid>
-                        ))}
-                    </Grid>
-                </Box>
-        
+                    </Box>
+                </Container>
+            </Box>
+
+            <Container maxWidth="lg" sx={{ mt: 4, mb: 6 }}>
                 {/* SERVICIOS MÁS CONSULTADOS */}
                 <Box mb={6}>
                     <Typography variant="h5" gutterBottom>
@@ -182,23 +235,23 @@ export default function Home() {
                         {masConsultados.map((tramite) => (
                         <Grid item xs={12} sm={6} md={3} key={tramite.id}>
                             <Card>
-                            <CardContent>
-                                <Typography variant="subtitle1" fontWeight="bold">
-                                {tramite.nombre}
-                                </Typography>
-                                <Typography variant="body2" color="text.secondary">
-                                {tramite.descripcion?.slice(0, 80) || 'Descripción no disponible...'}
-                                </Typography>
-                            </CardContent>
-                            <CardActions>
-                                <Button
-                                size="small"
-                                component={Link}
-                                to={`/categoria/${tramite.categoria}/tramite/${tramite.id}`}
-                                >
-                                Realizar trámite
-                                </Button>
-                            </CardActions>
+                                <CardContent>
+                                    <Typography variant="subtitle1" fontWeight="bold">
+                                    {tramite.nombre}
+                                    </Typography>
+                                    <Typography variant="body2" color="text.secondary">
+                                    {tramite.descripcion?.slice(0, 80) || 'Descripción no disponible...'}
+                                    </Typography>
+                                </CardContent>
+                                <CardActions>
+                                    <Button
+                                    size="small"
+                                    component={Link}
+                                    to={`/categoria/${tramite.categoria}/tramite/${tramite.id}`}
+                                    >
+                                    Realizar trámite
+                                    </Button>
+                                </CardActions>
                             </Card>
                         </Grid>
                         ))}
