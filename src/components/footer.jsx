@@ -30,14 +30,14 @@ export default function Footer() {
                     </Grid>
 
                     <Grid item sm={12} xs={12} md={3}>
-                        <Typography variant="subtitle1" gutterBottom>Enlaces</Typography>
+                        <Typography variant="subtitle1" gutterBottom sx={{color:"white"}}>Enlaces</Typography>
                         {['Inicio','Contacto'].map((text, i) => (
                             <Link href="#" key={i} underline="hover" color="inherit" display="block">{text}</Link>
                         ))}
                     </Grid>
 
                     <Grid item sm={12} xs={12} md={3}>
-                        <Typography variant="subtitle1" gutterBottom>Dirección</Typography>
+                        <Typography variant="subtitle1" gutterBottom sx={{color:"white"}}>Dirección</Typography>
                         <Typography variant="body2">Zona 10, Ciudad de Guatemala</Typography>
                         <Typography variant="body2">info@redciudadana.org.gt</Typography>
                         <Typography variant="body2">Lunes a viernes, 8:00 a.m. - 5:00 p.m.</Typography>
