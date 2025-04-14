@@ -6,7 +6,7 @@ import Logored from '../assets/logored.png';
 export default function Footer() {
   return (
     <>
-        <Box sx={{ bgcolor: '#002c4b', color: 'white', py: 4, my: 2 }}>
+        <Box sx={{ bgcolor: '#002c4b', color: 'white', py: 4, mb: 2 }}>
             <Container maxWidth="lg" sx={{ my: 4}}>
                 <Grid container spacing={4} justifyContent="space-between">
                     <Grid item xs={12} md={4} sm={12}>
