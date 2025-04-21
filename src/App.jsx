@@ -6,6 +6,7 @@ import GoToTopButton from './components/gototop';
 import Layout from './components/layout';
 import Home from './pages/home';
 import Servicios from './pages/servicios';
+import ChatBot from './components/chatbot';
 
 const Tramite = lazy(() => import('./components/tramite'));
 const Categoria = lazy(() => import('./components/categoria'));
@@ -26,6 +27,7 @@ export default function App() {
 				</Route>
 			</Routes>
 			<GoToTopButton />
+			<ChatBot />
 		</Suspense >
     </Router>
   );
