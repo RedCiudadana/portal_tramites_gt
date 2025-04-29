@@ -21,33 +21,34 @@ import {
 import Masonry from "@mui/lab/Masonry";
 
 import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
-import WorkIcon from "@mui/icons-material/Work";
 import RecordVoiceOverIcon from "@mui/icons-material/RecordVoiceOver";
-import CommuteIcon from "@mui/icons-material/Commute";
-import MenuBookIcon from "@mui/icons-material/MenuBook";
-import ForestIcon from "@mui/icons-material/Forest";
-import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
-import FlashOnIcon from "@mui/icons-material/FlashOn";
-import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
-import EcoIcon from "@mui/icons-material/AttachMoney";
-import HouseIcon from "@mui/icons-material/House";
-import FlightTakeoffIcon from "@mui/icons-material/FlightTakeoff";
-import SecurityIcon from "@mui/icons-material/Security";
+
+import Trabajo from "../assets/iconos/trabajo.png";
+import ComyTrans from "../assets/iconos/comytrans.png";
+import EduCulDep from "../assets/iconos/educultdep.png";
+import MedioAmbiente from "../assets/iconos/medioambiente.png";
+import Salud from "../assets/iconos/salud.png";
+import Energía from "../assets/iconos/energia.png";
+import Economia from "../assets/iconos/economia.png";
+import AniyVeg from "../assets/iconos/aniyveg.png";
+import Vivienda from "../assets/iconos/vivienda.png";
+import Migracion from "../assets/iconos/migracion.png";
+import Seguridad from "../assets/iconos/seguridad.png";
 
 const iconMap = {
-  "Inscripciones y Registros": <AssignmentTurnedInIcon fontSize="large" />,
-  Trabajo: <WorkIcon fontSize="large" />,
-  "Mediación y Diálogo": <RecordVoiceOverIcon fontSize="large" />,
-  "Comunicaciones y Transporte": <CommuteIcon fontSize="large" />,
-  "Educación, Cultura y Deporte": <MenuBookIcon fontSize="large" />,
-  "Medio Ambiente": <ForestIcon fontSize="large" />,
-  Salud: <LocalHospitalIcon fontSize="large" />,
-  Energía: <FlashOnIcon fontSize="large" />,
-  Economía: <AttachMoneyIcon fontSize="large" />,
-  "Manejo de Animales y Vegetales": <EcoIcon fontSize="large" />,
-  "Territorio, Vivienda e Infraestructura": <HouseIcon fontSize="large" />,
-  "Servicios de Migración": <FlightTakeoffIcon fontSize="large" />,
-  Seguridad: <SecurityIcon fontSize="large" />,
+  "Inscripciones y Registros": <AssignmentTurnedInIcon fontSize="large" />, // faltaaaaa
+  Trabajo: <img src={Trabajo} alt="Trabajo" style={{ width: 60, height: 60 }} />,
+  "Mediación y Diálogo": <RecordVoiceOverIcon fontSize="large" />, // faltaaaa
+  "Comunicaciones y Transporte": <img src={ComyTrans} alt="Comunicación y Transporte" style={{ width: 60, height: 60 }} />,
+  "Educación, Cultura y Deporte": <img src={EduCulDep} alt="Educación, Cultura y Deporte" style={{ width: 60, height: 60 }} />,
+  "Medio Ambiente": <img src={MedioAmbiente} alt="Medio Ambiente" style={{ width: 60, height: 60 }} />,
+  Salud: <img src={Salud} alt="Salud" style={{ width: 60, height: 60 }} />,
+  Energía: <img src={Energía} alt="Energía" style={{ width: 60, height: 60 }} />,
+  Economía: <img src={Economia} alt="Economía" style={{ width: 60, height: 60 }} />,
+  "Manejo de Animales y Vegetales": <img src={AniyVeg} alt="Manejo de Animales y Vegetales" style={{ width: 60, height: 60 }} />,
+  "Territorio, Vivienda e Infraestructura": <img src={Vivienda} alt="Territorio, Vivienda e Infraestructura" style={{ width: 60, height: 60 }} />,
+  "Servicios de Migración": <img src={Migracion} alt="Servicios de Migración" style={{ width: 60, height: 60 }} />,
+  Seguridad: <img src={Seguridad} alt="Seguridad" style={{ width: 60, height: 60 }} />,
 };
 
 export default function Home() {
