@@ -14,6 +14,7 @@ import {
 import MenuIcon from '@mui/icons-material/Menu';
 import { Link as RouterLink } from 'react-router-dom';
 import Logo from '../assets/logo.png';
+import Logorednegro from '../assets/logorednegro.png';
 import Logoredblanco from '../assets/logoredblanco.png';
 import { useState } from 'react';
 
@@ -40,7 +41,7 @@ export default function Header() {
               style={{ width: 25, height: 'auto' }}
             />
           <Typography variant="body2">
-            Esta es una web oficial de la Asociación Civil Red Ciudadana
+            Sitio oficial de la Asociación Civil Red Ciudadana
           </Typography>
         </Container>
       </Box>
@@ -49,12 +50,25 @@ export default function Header() {
       <AppBar position="static" color="inherit" elevation={0}>
         <Container maxWidth="lg" sx={{ my: 2 }}>
           <Toolbar disableGutters sx={{ justifyContent: 'space-between', width: '100%' }}>
-            <RouterLink to="/">
-              <img
-                src={Logo}
-                alt="Logo Gobierno Digital"
-                style={{ width: 250, height: 'auto' }}
-              />
+            <RouterLink to="/" >   
+              <Box
+                sx={{
+                  display: { xs: 'block', md: 'flex' },
+                  alignItems: 'center',
+                  textAlign: { xs: 'center', md: 'left' },
+                }}
+              >
+                <img
+                  src={Logorednegro}
+                  alt="Logo Red Ciudadana"
+                  style={{ width: 220, height: 'auto'}}
+                />
+                <img
+                  src={Logo}
+                  alt="Logo Gobierno Digital"
+                  style={{ width: 220, height: 'auto' }}
+                />
+              </Box>        
             </RouterLink>
 
             {/* Botones para escritorio */}

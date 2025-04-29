@@ -1,4 +1,5 @@
-// src/App.jsx
+// App.jsx
+import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
 import ScrollToTop from './components/scrolltotop';
@@ -7,28 +8,45 @@ import Layout from './components/layout';
 import Home from './pages/home';
 import Servicios from './pages/servicios';
 import ChatBot from './components/chatbot';
+import Loader from './components/loader';
 
 const Tramite = lazy(() => import('./components/tramite'));
 const Categoria = lazy(() => import('./components/categoria'));
 const Institucion = lazy(() => import('./components/institucion'));
 
 export default function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+      document.body.style.overflow = 'visible';
+    }, 1000); // puedes ajustar este tiempo según necesidad
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <Router>
-		<ScrollToTop />
-		<Suspense fallback={<div>Cargando...</div>}>
-			<Routes>
-				<Route element={<Layout />}>
-					<Route path="/categoria/:categoria/tramite/:id" element={<Tramite />} />
-					<Route path="/categoria/:categoria" element={<Categoria />} />
-					<Route path="/institucion/:nombre" element={<Institucion />} />
-					<Route path="/" element={<Home />} />
-					<Route path="/servicios" element={<Servicios />} />
-				</Route>
-			</Routes>
-			<GoToTopButton />
-			<ChatBot />
-		</Suspense >
+      {isLoading && <Loader />}
+      {!isLoading && (
+        <>
+          <ScrollToTop />
+          <Suspense fallback={<Loader />}>
+            <Routes>
+              <Route element={<Layout />}>
+                <Route path="/categoria/:categoria/tramite/:id" element={<Tramite />} />
+                <Route path="/categoria/:categoria" element={<Categoria />} />
+                <Route path="/institucion/:nombre" element={<Institucion />} />
+                <Route path="/" element={<Home />} />
+                <Route path="/servicios" element={<Servicios />} />
+              </Route>
+            </Routes>
+            <GoToTopButton />
+            <ChatBot />
+          </Suspense>
+        </>
+      )}
     </Router>
   );
 }
