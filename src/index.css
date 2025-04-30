@@ -38,8 +38,14 @@ h1,h2,h3,h4,h5,h6{
   color: #02324F;
 }
 
-p, span, a, li, button {
+p, span, li, button {
   font-family: 'MetropolisRegular', sans-serif!important;
+  color: #02324F;
+}
+
+a{
+  font-family: 'MetropolisRegular', sans-serif!important;
+  color: #1976d2;
 }
 
 #preloader-active {

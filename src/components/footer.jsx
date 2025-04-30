@@ -17,7 +17,7 @@ export default function Footer() {
                                 style={{ width: 250, height: 'auto', marginBottom: '16px' }}
                             />
                         </a>
-                        <Typography variant="body2">
+                        <Typography variant="body2" sx={{color:"white"}}>
                         En Red Ciudadana trabajamos para fortalecer la transparencia y promover la participación activa.
                         </Typography>
                         <Box sx={{ mt: 2 }}>
@@ -38,9 +38,9 @@ export default function Footer() {
 
                     <Grid item sm={12} xs={12} md={3}>
                         <Typography variant="subtitle1" gutterBottom sx={{color:"white"}}>Dirección</Typography>
-                        <Typography variant="body2">Zona 10, Ciudad de Guatemala</Typography>
-                        <Typography variant="body2">info@redciudadana.org.gt</Typography>
-                        <Typography variant="body2">Lunes a viernes, 8:00 a.m. - 5:00 p.m.</Typography>
+                        <Typography variant="body2" sx={{color:"white"}}>Zona 10, Ciudad de Guatemala</Typography>
+                        <Typography variant="body2" sx={{color:"white"}}>info@redciudadana.org.gt</Typography>
+                        <Typography variant="body2" sx={{color:"white"}}>Lunes a viernes, 8:00 a.m. - 5:00 p.m.</Typography>
                     </Grid>
                 </Grid>
             </Container>
