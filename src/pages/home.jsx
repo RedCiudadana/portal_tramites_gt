@@ -88,52 +88,54 @@ export default function Home() {
           px: 2,
         }}
       >
-        <Container maxWidth="md">
-          <Typography
-            variant="h3"
-            component="h1"
-            gutterBottom
-            sx={{ fontWeight: "bold", color: "rgba(255,255,255,1)" }}
-          >
-            Observatorio de Trámites de Guatemala
-          </Typography>
-          <Typography variant="h6" sx={{ color: "rgba(255,255,255,0.9)" }}>
-            Accede a la información, pasos y requisitos de los trámites públicos
-            nacionales y municipales en un solo lugar.
-          </Typography>
-          <Box
-            component="form"
-            onSubmit={handleSubmit}
-            sx={{
-              display: "flex",
-              flexDirection: { xs: "column", sm: "row" },
-              gap: 2,
-              my: 4,
-            }}
-          >
-            <TextField
-              label="Buscar servicio"
-              variant="outlined"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              sx={{ width: { xs: "100%", sm: "80%", backgroundColor: "#fff" } }}
-            />
-            <Button
-              type="submit"
-              variant="contained"
+        <Container maxWidth="lg">
+          <Container maxWidth="md">
+            <Typography
+              variant="h3"
+              component="h1"
+              gutterBottom
+              sx={{ fontWeight: "bold", color: "rgba(255,255,255,1)" }}
+            >
+              Observatorio de Trámites de Guatemala
+            </Typography>
+            <Typography variant="h6" sx={{ color: "rgba(255,255,255,0.9)" }}>
+              Accede a la información, pasos y requisitos de los trámites públicos
+              nacionales y municipales en un solo lugar.
+            </Typography>
+            <Box
+              component="form"
+              onSubmit={handleSubmit}
               sx={{
-                width: { xs: "100%", sm: "20%", backgroundColor: "#0089DF" },
+                display: "flex",
+                flexDirection: { xs: "column", sm: "row" },
+                gap: 2,
+                my: 4,
               }}
             >
-              Buscar
-            </Button>
-          </Box>
+              <TextField
+                label="Buscar servicio"
+                variant="outlined"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                sx={{ width: { xs: "100%", sm: "80%", backgroundColor: "#fff" } }}
+              />
+              <Button
+                type="submit"
+                variant="contained"
+                sx={{
+                  width: { xs: "100%", sm: "20%", backgroundColor: "#0089DF" },
+                }}
+              >
+                Buscar
+              </Button>
+            </Box>
+          </Container>
+          <img
+            src={Sliderdown}
+            alt="Slider Image"
+            style={{ width: "100%", height: "auto" }}
+          />
         </Container>
-        <img
-          src={Sliderdown}
-          alt="Slider Image"
-          style={{ width: "100%", height: "auto" }}
-        />
       </Box>
 
       {/* CONTENIDO PRINCIPAL */}

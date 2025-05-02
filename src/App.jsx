@@ -9,6 +9,7 @@ import Home from './pages/home';
 import Servicios from './pages/servicios';
 import ChatBot from './components/chatbot';
 import Loader from './components/loader';
+import FeedbackButton from './components/feedbackButton';
 
 const Tramite = lazy(() => import('./components/tramite'));
 const Categoria = lazy(() => import('./components/categoria'));
@@ -44,6 +45,7 @@ export default function App() {
             </Routes>
             <GoToTopButton />
             <ChatBot />
+            <FeedbackButton />
           </Suspense>
         </>
       )}

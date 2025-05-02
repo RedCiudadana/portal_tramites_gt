@@ -18,6 +18,12 @@ import Logorednegro from '../assets/logorednegro.png';
 import Logoredblanco from '../assets/logoredblanco.png';
 import { useState } from 'react';
 
+import FacebookIcon from '@mui/icons-material/Facebook';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import YouTubeIcon from '@mui/icons-material/YouTube';
+import XIcon from '@mui/icons-material/X';
+
 export default function Header() {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
@@ -27,7 +33,17 @@ export default function Header() {
 
   const navItems = [
     { text: 'Inicio', path: '/' },
-    { text: 'Servicios', path: '/servicios' }
+    { text: 'Observatorio', path: '/observatorio' },
+    { text: 'Instituciones', path: '/instituciones' },
+    { text: 'Trámites', path: '/servicios' },
+    { text: 'Contacto', path: '/contacto' }
+  ];
+
+  const socialLinks = [
+    { icon: <FacebookIcon />, url: 'https://www.facebook.com/redciudadanagt' },
+    { icon: <XIcon />, url: 'https://twitter.com/RedxGuate' },
+    { icon: <InstagramIcon />, url: 'https://www.instagram.com/redxguate/' },
+    { icon: <YouTubeIcon />, url: 'https://www.youtube.com/channel/UCQwc62j7beStZYFzwPxBEQg' }
   ];
 
   return (
@@ -72,12 +88,35 @@ export default function Header() {
             </RouterLink>
 
             {/* Botones para escritorio */}
-            <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 2 }}>
-              {navItems.map(({ text, path }) => (
-                <Button key={path} component={RouterLink} to={path} color="inherit">
+            <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 2 }}>
+              {navItems.map(({ text, path }, index) => (
+                  <Typography
+                  key={index}
+                  component={RouterLink}
+                  to={path}
+                  sx={{
+                    color: '#02324F',
+                    textTransform: 'none',
+                    fontWeight: 600,
+                    fontSize: '1rem',
+                    textDecoration: 'none',
+                    '&:hover': {
+                      textDecoration: 'underline',
+                    },
+                  }}
+                >
                   {text}
-                </Button>
+                </Typography>            
               ))}
+
+              {/* Íconos de redes sociales */}
+              <Box sx={{ display: 'flex', gap: 1, ml: 2 }}>
+                {socialLinks.map(({ icon, url }, index) => (
+                  <IconButton key={index} component="a" href={url} target="_blank" rel="noopener" color="inherit">
+                    {icon}
+                  </IconButton>
+                ))}
+              </Box>
             </Box>
 
             {/* Botón hamburguesa para móviles */}
