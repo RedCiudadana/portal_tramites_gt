@@ -19,8 +19,6 @@ import {
   Link as MuiLink,
 } from "@mui/material";
 
-import Masonry from "@mui/lab/Masonry";
-
 import Inscripciones from "../assets/iconos/inscripciones.png";
 import Trabajo from "../assets/iconos/trabajo.png";
 import Dialogo from "../assets/iconos/dialogo.png";
@@ -216,7 +214,7 @@ export default function Home() {
             <Typography variant="h5" gutterBottom mb={2}>
               Trámites destacados
             </Typography>
-            <div style={{ backgroundColor: "#088cdc", width: "120px", height: "5px", marginBlock: "15px" }}></div>
+            <div style={{ backgroundColor: "#088cdc", width: "120px", height: "5px", marginTop: "15px", marginBottom: "40px" }}></div>
 
             <Grid container spacing={3} size={{ xs: 12, sm: 12, md: 12 }}>
               {/* IZQUIERDA - Trámite principal */}
@@ -350,7 +348,6 @@ export default function Home() {
 
       {/* INSTITUCIONES */}
       <Container maxWidth="lg" sx={{ mt: 8, mb: 8 }}>
-        {/* SECTORES */}
         <Box mb={6}>
           <Box
             display="flex"

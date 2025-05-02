@@ -7,6 +7,8 @@ import GoToTopButton from './components/gototop';
 import Layout from './components/layout';
 import Home from './pages/home';
 import Servicios from './pages/servicios';
+import Instituciones from './pages/instituciones';
+
 import ChatBot from './components/chatbot';
 import Loader from './components/loader';
 import FeedbackButton from './components/feedbackButton';
@@ -38,6 +40,7 @@ export default function App() {
               <Route element={<Layout />}>
                 <Route path="/categoria/:categoria/tramite/:id" element={<Tramite />} />
                 <Route path="/categoria/:categoria" element={<Categoria />} />
+                <Route path="/instituciones" element={<Instituciones />} />
                 <Route path="/institucion/:nombre" element={<Institucion />} />
                 <Route path="/" element={<Home />} />
                 <Route path="/servicios" element={<Servicios />} />
