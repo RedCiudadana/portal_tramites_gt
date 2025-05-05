@@ -12,7 +12,10 @@ import {
   Button,
   TextField,
   Pagination,
+	Box 
 } from '@mui/material';
+
+import iconMap from '../utils/iconosPorCategoria';
 
 export default function Categoria() {
 	const { categoria } = useParams();
@@ -54,63 +57,85 @@ export default function Categoria() {
 	}, [categoria]);
 
 	return (
-		<Container maxWidth="lg" sx={{ mt: 4, mb: 6 }}>
-			<Typography variant="h4" fontWeight="bold" gutterBottom>
-				Categoría: {categoria}
-			</Typography>
-			<Typography variant="body1" color="text.secondary" mb={3}>
-				Mostrando los trámites disponibles de esta categoría.
-			</Typography>
-
-			<TextField
-				fullWidth
-				label="Buscar trámite en esta categoría"
-				variant="outlined"
-				value={search}
-				onChange={handleSearchChange}
-				sx={{ mb: 4 }}
-			/>
-
-			{filtrados.length === 0 ? (
-				<Typography variant="body1" color="error">
-				No se encontraron trámites en esta categoría con ese criterio de búsqueda.
-				</Typography>
-			) : (
+			
+		<Box sx={{ backgroundColor: "#d8e5ed", p: 4}}>
+			<Container maxWidth="lg" sx={{ mt: 4, mb: 6, backgroundColor: "#fff" }}>
 				<Grid container spacing={3}>
-				{currentItems.map(({ id, nombre, descripcion }) => (
-					<Grid item xs={12} sm={6} md={4} key={id}>
-						<Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-							<CardContent sx={{ flexGrow: 1 }}>
-								<Typography variant="h6" fontWeight="bold" gutterBottom>
-									{nombre}
-								</Typography>
-								<Typography variant="body2" color="text.secondary">
-									{descripcion?.slice(0, 120) || 'Descripción no disponible.'}
-								</Typography>
-							</CardContent>
-							<CardActions>
-								<Button
-									size="small"
-									component={Link}
-									to={`/categoria/${categoria}/tramite/${id}`}
-								>
-									Ver trámite
-								</Button>
-							</CardActions>
-						</Card>
-					</Grid>
-				))}
-				</Grid>
-			)}
+					{/* Left Column: Title and Search Bar */}
+					<Grid size={{ xs: 12, md: 4 }} sx={{ marginBlock: 6, paddingRight: "5px", paddingLeft: "5px" }}>
+						{iconMap[categoria] && (
+							<Box sx={{ display: 'flex', mb: 2 }}>
+								<img
+									src={iconMap[categoria]}
+									alt={`Ícono de ${categoria}`}
+									style={{ maxWidth: '120px', height: 'auto' }}
+								/>
+							</Box>
+						)}
 
-			{totalPages > 1 && (
-				<Pagination
-				count={totalPages}
-				page={page}
-				onChange={(e, value) => setPage(value)}
-				sx={{ mt: 4, display: 'flex', justifyContent: 'center' }}
-				/>
-			)}
-		</Container>
+						{/* Title */}
+						<Typography variant="h4" fontWeight="bold" gutterBottom>
+							Categoría: {categoria}
+						</Typography>
+						<div style={{ backgroundColor: "#088cdc", width: "120px", height: "5px", marginTop: "15px", marginBottom: "40px" }}></div>
+						{/* Search Bar */}
+						<TextField
+							fullWidth
+							label="Buscar trámite en esta categoría"
+							variant="outlined"
+							value={search}
+							onChange={handleSearchChange}
+							sx={{ mb: 4 }}
+						/>
+						<Typography variant="body1" color="text.secondary" mb={3}>
+							Mostrando los trámites disponibles de esta categoría.
+						</Typography>
+					</Grid>
+
+					{/* Right Column: Trámites List */}
+					<Grid size={{ xs: 12, md: 8 }} sx={{ marginBlock: 6 }}>
+						{filtrados.length === 0 ? (
+							<Typography variant="body1" color="error">
+								No se encontraron trámites en esta categoría con ese criterio de búsqueda.
+							</Typography>
+						) : (
+							<Grid container spacing={3}>
+								{currentItems.map(({ id, nombre, descripcion }) => (
+									<Grid size={{ xs: 12, sm: 12, md: 12 }} key={id}>
+										<Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+											<CardContent sx={{ flexGrow: 1 }}>
+												<Typography variant="h6" fontWeight="bold" gutterBottom>
+													{nombre}
+												</Typography>
+												<Typography variant="body2" color="text.secondary">
+													{descripcion?.slice(0, 120) || 'Descripción no disponible.'}
+												</Typography>
+											</CardContent>
+											<CardActions>
+												<Button
+													size="small"
+													component={Link}
+													to={`/categoria/${categoria}/tramite/${id}`}
+												>
+													Ver trámite
+												</Button>
+											</CardActions>
+										</Card>
+									</Grid>
+								))}
+							</Grid>
+						)}
+						{totalPages > 1 && (
+							<Pagination
+								count={totalPages}
+								page={page}
+								onChange={(e, value) => setPage(value)}
+								sx={{ mt: 4, display: 'flex', justifyContent: 'center' }}
+							/>
+						)}
+					</Grid>
+				</Grid>
+			</Container>
+		</Box>
 	);
 }

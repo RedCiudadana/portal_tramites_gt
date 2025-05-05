@@ -56,7 +56,7 @@ export default function Header() {
               alt="Logo Red Blanco"
               style={{ width: 25, height: 'auto' }}
             />
-          <Typography variant="body2">
+          <Typography variant="body2" sx={{ color: '#fff' }}>
             Sitio oficial de la Asociación Civil Red Ciudadana
           </Typography>
         </Container>
