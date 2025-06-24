@@ -53,11 +53,11 @@ export default function Servicios() {
   }, [location.search]);
 
   return (
-    <Container maxWidth="lg" sx={{ mt: 4, mb: 6 }}>
+    <Container maxWidth="xl" sx={{ mt: 4, mb: 6 }}>
       <Typography variant="h4" fontWeight="bold" gutterBottom>
         Lista de Servicios Disponibles
       </Typography>
-      <Typography variant="body1" color="text.secondary" mb={3}>
+      <Typography variant="body1" color="#02324f" mb={3}>
         Estos son todos los trámites disponibles actualmente en la plataforma.
       </Typography>
 
@@ -92,7 +92,7 @@ export default function Servicios() {
                     <Typography variant="h6" fontWeight="bold" gutterBottom>
                       {nombre}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="body2" color="#02324f">
                       {descripcion?.slice(0, 120) ||
                         "Descripción no disponible."}
                     </Typography>

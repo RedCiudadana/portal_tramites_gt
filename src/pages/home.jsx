@@ -34,6 +34,9 @@ import Migracion from "../assets/iconos/migracion.png";
 import Seguridad from "../assets/iconos/seguridad.png";
 import Institucion from "../assets/iconos/institucion.png";
 
+import LogoF1 from "../assets/home/LOGOS-01.png";
+import LogoF2 from "../assets/home/LOGOS-02.png";
+
 const iconMap = {
   "Inscripciones y Registros": <img src={Inscripciones} alt="Inscripciones y Registros" style={{ width: 60, height: 60 }} />,
   Trabajo: <img src={Trabajo} alt="Trabajo" style={{ width: 60, height: 60 }} />,
@@ -76,30 +79,34 @@ export default function Home() {
       <Box
         sx={{
           width: "100%",
-          backgroundImage: `url(${Sliderfondo})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
+          backgroundColor: "#d9e4ed",
           color: "white",
           pt: { xs: 8, md: 12 },
           textAlign: "center",
           px: 2,
         }}
       >
-        <Container maxWidth="lg">
-          <Container maxWidth="md">
+        <Container maxWidth="xl">
+          <Container maxWidth="lg">
             <Typography
               variant="h3"
               component="h1"
               gutterBottom
-              sx={{ fontWeight: "bold", color: "rgba(255,255,255,1)" }}
+              sx={{ fontWeight: "bold"}}
             >
               Observatorio de Trámites de Guatemala
             </Typography>
-            <Typography variant="h6" sx={{ color: "rgba(255,255,255,0.9)" }}>
+            <Typography variant="p">
               Accede a la información, pasos y requisitos de los trámites públicos
               nacionales y municipales en un solo lugar.
             </Typography>
+          </Container>
+          <img
+            src={Sliderdown}
+            alt="Slider Image"
+            style={{ width: "100%", height: "auto" }}
+          />
+          <Container maxWidth="lg" sx={{ mt: {xs: 0, md: -10}, pb: 4 }}>
             <Box
               component="form"
               onSubmit={handleSubmit}
@@ -128,17 +135,12 @@ export default function Home() {
               </Button>
             </Box>
           </Container>
-          <img
-            src={Sliderdown}
-            alt="Slider Image"
-            style={{ width: "100%", height: "auto" }}
-          />
         </Container>
       </Box>
 
       {/* CONTENIDO PRINCIPAL */}
 
-      <Container maxWidth="lg" sx={{ mt: 4, mb: 6 }}>
+      <Container maxWidth="xl" sx={{ my: 10 }}>
         {/* SECTORES */}
         <Box mb={6}>
           <Box
@@ -209,7 +211,7 @@ export default function Home() {
 
       {/* SERVICIOS DESTACADOS */}
       <Box sx={{ backgroundColor: "#d8e5ed", p: 4, mb: 4 }}>
-        <Container maxWidth="lg" sx={{ mt: 4, mb: 6 }}>
+        <Container maxWidth="xl" sx={{ mt: 4, mb: 6 }}>
           <Box mb={6}>
             <Typography variant="h5" gutterBottom mb={2}>
               Trámites destacados
@@ -229,7 +231,7 @@ export default function Home() {
                       display: "flex",
                       gap: 2,
                       alignItems: "flex-start",
-                      minHeight: 280,
+                      minHeight: "100%",
                     }}
                   >
                     {/* Icono o imagen del sector */}
@@ -237,13 +239,13 @@ export default function Home() {
 
                     {/* Contenido */}
                     <Box sx={{ display: "flex", flexDirection: "column", flex: 1 }}>
-                      <Typography variant="h6" fontWeight="bold" gutterBottom>
+                      <Typography variant="h6" fontWeight="bold" gutterBottom sx={{ lineHeight: 1.2 }}>
                         {destacados[0].nombre}
                       </Typography>
                       <Tooltip title={destacados[0].descripcion || 'Descripción no disponible...'} arrow>
                         <Typography
                           variant="body2"
-                          color="text.secondary"
+                          color="#02324f"
                           sx={{
                             display: '-webkit-box',
                             WebkitLineClamp: 12,
@@ -299,6 +301,7 @@ export default function Home() {
                                 WebkitBoxOrient: 'vertical',
                                 overflow: 'hidden',
                                 textOverflow: 'ellipsis',
+                                lineHeight: 1.2
                               }}
                             >
                               {tramite.nombre}
@@ -310,7 +313,7 @@ export default function Home() {
                         <Tooltip title={tramite.descripcion || 'Descripción no disponible...'} arrow>
                           <Typography
                             variant="body2"
-                            color="text.secondary"
+                            color="#02324f"
                             sx={{
                               display: '-webkit-box',
                               WebkitLineClamp: 4,
@@ -324,17 +327,15 @@ export default function Home() {
                         </Tooltip>
 
                         {/* Link */}
-                        <Link
+                        <Button
+                          variant="contained"
+                          size="small"
                           component={Link}
                           to={`/categoria/${tramite.categoria}/tramite/${tramite.id}`}
-                          underline="hover"
-                          variant="body2"
-                          style={{
-                            marginTop: '10px'
-                          }}
+                          sx={{ width: 'fit-content', mt: 2 }}
                         >
                           Realizar trámite
-                        </Link>
+                        </Button>
 
                       </Box>
                     </Grid>
@@ -347,7 +348,7 @@ export default function Home() {
       </Box>
 
       {/* INSTITUCIONES */}
-      <Container maxWidth="lg" sx={{ mt: 8, mb: 8 }}>
+      <Container maxWidth="xl" sx={{ mt: 8, mb: 8 }}>
         <Box mb={6}>
           <Box
             display="flex"
@@ -420,6 +421,26 @@ export default function Home() {
         </Box>
       </Container>
 
+      {/* LOGOS COLABORADORES */}
+      <Container maxWidth="xl" sx={{ mt: 8, mb: 8 }}>
+        <Box mb={6} display="flex" flexDirection="column" alignItems="center">
+          <Box display="flex" justifyContent="center" alignItems="center" gap={6} mb={3}>
+            <img
+              src={LogoF1}
+              alt="Comision Europea"
+              style={{ height: 80, objectFit: "contain" }}
+            />
+            <img
+              src={LogoF2}
+              alt="Indico Global"
+              style={{ height: 80, objectFit: "contain" }}
+            />
+          </Box>
+          <Typography variant="body1" color="#02324f" align="center" maxWidth={1000}>
+            Enhancing Digital Government in Guatemala through European Standards" - Red Ciudadana, is one of the beneficiaries of a grant under the first Open Call under InDiCo-Global, which is a project funded as part of the European Union's Horizon Europe Research and Innovation Programme under Grant Agreement No 101136022. Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union. Neither the European Union nor the granting authority can be held responsible for them.
+          </Typography>
+        </Box>
+      </Container>
     </>
   );
 }

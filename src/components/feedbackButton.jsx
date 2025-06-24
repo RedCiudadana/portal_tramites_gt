@@ -44,7 +44,7 @@ export default function FeedbackButton() {
             transformOrigin: 'right top',
             height: 48,
             px: 2,
-            color: '#02324F',
+            color: '#0089df',
           }}
         >
           <ArrowCircleDownIcon sx={{ fontSize: 20 }} />
@@ -70,7 +70,7 @@ export default function FeedbackButton() {
           />
           <Button
             variant="contained"
-            sx={{ mt: 2, bgcolor: '#02324F', '&:hover': { bgcolor: '#034063' } }}
+            sx={{ mt: 2, bgcolor: '#0089df', '&:hover': { bgcolor: '#034063' } }}
             fullWidth
             onClick={toggleDrawer(false)} // Esto cierra al enviar
           >

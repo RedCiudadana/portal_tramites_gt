@@ -188,7 +188,7 @@ export default function ChatBot() {
             bottom: 90,
             right: 24,
             zIndex: 1500,
-            backgroundColor: '#02324F',
+            backgroundColor: '#0089df',
             color: 'white',
             '&:hover': { backgroundColor: '#03506f' },
             }}

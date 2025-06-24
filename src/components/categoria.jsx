@@ -59,7 +59,7 @@ export default function Categoria() {
 	return (
 			
 		<Box sx={{ backgroundColor: "#d8e5ed", p: 4}}>
-			<Container maxWidth="lg" sx={{ mt: 4, mb: 6, backgroundColor: "#fff" }}>
+			<Container maxWidth="xl" sx={{ mt: 4, mb: 6, backgroundColor: "#fff" }}>
 				<Grid container spacing={3}>
 					{/* Left Column: Title and Search Bar */}
 					<Grid size={{ xs: 12, md: 4 }} sx={{ marginBlock: 6, paddingRight: "5px", paddingLeft: "5px" }}>
@@ -87,7 +87,7 @@ export default function Categoria() {
 							onChange={handleSearchChange}
 							sx={{ mb: 4 }}
 						/>
-						<Typography variant="body1" color="text.secondary" mb={3}>
+						<Typography variant="body1" color="#02324f" mb={3}>
 							Mostrando los trámites disponibles de esta categoría.
 						</Typography>
 					</Grid>
@@ -107,7 +107,7 @@ export default function Categoria() {
 												<Typography variant="h6" fontWeight="bold" gutterBottom>
 													{nombre}
 												</Typography>
-												<Typography variant="body2" color="text.secondary">
+												<Typography variant="body2" color="#02324f">
 													{descripcion?.slice(0, 120) || 'Descripción no disponible.'}
 												</Typography>
 											</CardContent>

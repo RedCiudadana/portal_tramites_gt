@@ -35,70 +35,93 @@ export default function Instituciones() {
   }, [search]);
 
   return (
-    <Container maxWidth="lg" sx={{ mt: 4, mb: 6 }}>
-      <Typography variant="h4" fontWeight="bold" gutterBottom>
-        Todas las instituciones
-      </Typography>
-      <Typography variant="body1" color="text.secondary" mb={3}>
-        Selecciona una institución para ver sus trámites disponibles.
-      </Typography>
+    <>
+      <Box
+        sx={{
+          width: "100%",
+          backgroundColor: "#d9e4ed",
+          color: "white",
+          pt: { xs: 8, md: 12 },
+          textAlign: "center",
+          px: 2,
+        }}
+      >
+        <Container maxWidth="xl">
+          <Container maxWidth="lg">
+            <Typography
+              variant="h3"
+              component="h1"
+              gutterBottom
+              sx={{ fontWeight: "bold", pb: 10,}}
+            >
+              Todas las instituciones
+            </Typography>
+          </Container>
+        </Container>
+      </Box>
+      
+      <Container maxWidth="xl" sx={{ mt: 4, mb: 6 }}>
+        <Typography variant="body1" color="#02324f" mb={3}>
+          Selecciona una institución para ver sus trámites disponibles.
+        </Typography>
 
-      <TextField
-        fullWidth
-        label="Buscar institución"
-        variant="outlined"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-        sx={{ mb: 4 }}
-      />
+        <TextField
+          fullWidth
+          label="Buscar institución"
+          variant="outlined"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          sx={{ mb: 4 }}
+        />
 
-      {/* INSTITUCIONES */}
+        {/* INSTITUCIONES */}
 
-      <Grid container spacing={2}>
-        {instituciones.map((inst) => (
-          <Grid
-            key={inst}
-            size={{ xs: 6, sm: 6, md: 3 }}
-            sx={{
-              display: 'flex',
-              justifyContent: 'center',
-            }}
-          >
-            <Card
-              component={Link}
-              to={`/institucion/${inst}`}
+        <Grid container spacing={2}>
+          {instituciones.map((inst) => (
+            <Grid
+              key={inst}
+              size={{ xs: 6, sm: 6, md: 3 }}
               sx={{
-                width: '100%',
-                height: 160,
-                textDecoration: 'none',
-                border: '1px solid #cfd8dc',
-                borderRadius: 2,
-                transition: 'transform 0.2s ease-in-out',
-                '&:hover': {
-                  transform: 'translateY(-4px)',
-                  boxShadow: 3,
-                },
+                display: 'flex',
+                justifyContent: 'center',
               }}
             >
-              <Box
+              <Card
+                component={Link}
+                to={`/institucion/${inst}`}
                 sx={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  height: '100%',
-                  p: 2,
-                  textAlign: 'center',
+                  width: '100%',
+                  height: 160,
+                  textDecoration: 'none',
+                  border: '1px solid #cfd8dc',
+                  borderRadius: 2,
+                  transition: 'transform 0.2s ease-in-out',
+                  '&:hover': {
+                    transform: 'translateY(-4px)',
+                    boxShadow: 3,
+                  },
                 }}
               >
-                <img src={Institucion} alt="Institucion" style={{ width: 60, height: 60 }} />
-                <Typography fontWeight="bold">
-                  {inst}
-                </Typography>
-              </Box>
-            </Card>
-          </Grid>
-        ))}
-      </Grid>
-    </Container>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    height: '100%',
+                    p: 2,
+                    textAlign: 'center',
+                  }}
+                >
+                  <img src={Institucion} alt="Institucion" style={{ width: 60, height: 60 }} />
+                  <Typography fontWeight="bold">
+                    {inst}
+                  </Typography>
+                </Box>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
+    </>
   );
 }

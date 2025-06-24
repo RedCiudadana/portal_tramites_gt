@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <>
         <Box sx={{ bgcolor: '#002c4b', color: 'white', py: 4, mb: 2 }}>
-            <Container maxWidth="lg" sx={{ my: 4}}>
+            <Container maxWidth="xl" sx={{ my: 4}}>
                 <Grid container spacing={4} justifyContent="space-between">
                     <Grid item xs={12} md={4} sm={12}>
                         <a href="https://redciudadana.org.gt" target="_blank" rel="noopener noreferrer">
@@ -39,14 +39,16 @@ export default function Footer() {
                     <Grid item sm={12} xs={12} md={3}>
                         <Typography variant="subtitle1" gutterBottom sx={{color:"white"}}>Dirección</Typography>
                         <Typography variant="body2" sx={{color:"white"}}>Zona 10, Ciudad de Guatemala</Typography>
+                        <Typography variant="subtitle1" gutterBottom sx={{color:"white", mt:2}}>Correo Electrónico</Typography>
                         <Typography variant="body2" sx={{color:"white"}}>info@redciudadana.org.gt</Typography>
+                        <Typography variant="subtitle1" gutterBottom sx={{color:"white", mt:2}}>Horario de Atención</Typography>
                         <Typography variant="body2" sx={{color:"white"}}>Lunes a viernes, 8:00 a.m. - 5:00 p.m.</Typography>
                     </Grid>
                 </Grid>
             </Container>
         </Box>
         <Box sx={{ bgcolor: '#fff', py: 2, my: 2 }}>
-            <Container maxWidth="lg" align="center">
+            <Container maxWidth="xl" align="center">
                 <Typography variant="body">
                 Asociación Civil Red Ciudadana © 2025
                 </Typography>

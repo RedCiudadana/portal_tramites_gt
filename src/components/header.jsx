@@ -50,7 +50,7 @@ export default function Header() {
     <>
       {/* Barra informativa */}
       <Box sx={{ bgcolor: '#002c4b', color: 'white', py: 1 }}>
-        <Container maxWidth="lg" sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+        <Container maxWidth="xl" sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
             <img
               src={Logoredblanco}
               alt="Logo Red Blanco"
@@ -64,7 +64,7 @@ export default function Header() {
 
       {/* AppBar principal */}
       <AppBar position="static" color="inherit" elevation={0}>
-        <Container maxWidth="lg" sx={{ my: 2 }}>
+        <Container maxWidth="xl" sx={{ my: 2 }}>
           <Toolbar disableGutters sx={{ justifyContent: 'space-between', width: '100%' }}>
             <RouterLink to="/" >   
               <Box
@@ -77,12 +77,12 @@ export default function Header() {
                 <img
                   src={Logorednegro}
                   alt="Logo Red Ciudadana"
-                  style={{ width: 220, height: 'auto'}}
+                  style={{ width: 180, marginRight: '20px', height: 'auto'}}
                 />
                 <img
                   src={Logo}
                   alt="Logo Gobierno Digital"
-                  style={{ width: 220, height: 'auto' }}
+                  style={{ width: 180, height: 'auto' }}
                 />
               </Box>        
             </RouterLink>
@@ -112,7 +112,7 @@ export default function Header() {
               {/* Íconos de redes sociales */}
               <Box sx={{ display: 'flex', gap: 1, ml: 2 }}>
                 {socialLinks.map(({ icon, url }, index) => (
-                  <IconButton key={index} component="a" href={url} target="_blank" rel="noopener" color="inherit">
+                  <IconButton key={index} component="a" href={url} target="_blank" rel="noopener" sx={{ color: "#02324f" }}>
                     {icon}
                   </IconButton>
                 ))}
