@@ -264,7 +264,7 @@ export default function Home() {
                           component={Link}
                           to={`/categoria/${destacados[0].categoria}/tramite/${destacados[0].id}`}
                         >
-                          Ir a servicio
+                          Ir al trámite
                         </Button>
                       </Box>
                     </Box>
@@ -334,7 +334,7 @@ export default function Home() {
                           to={`/categoria/${tramite.categoria}/tramite/${tramite.id}`}
                           sx={{ width: 'fit-content', mt: 2 }}
                         >
-                          Realizar trámite
+                          Ir al trámite
                         </Button>
 
                       </Box>
@@ -424,6 +424,9 @@ export default function Home() {
       {/* LOGOS COLABORADORES */}
       <Container maxWidth="xl" sx={{ mt: 8, mb: 8 }}>
         <Box mb={6} display="flex" flexDirection="column" alignItems="center">
+          <Typography variant="h5" color="#02324f" align="center" marginBottom={4} maxWidth={1000}>
+           Gracias al apoyo de:
+          </Typography>
           <Box display="flex" justifyContent="center" alignItems="center" gap={6} mb={3}>
             <img
               src={LogoF1}
@@ -441,6 +444,7 @@ export default function Home() {
           </Typography>
         </Box>
       </Container>
+
     </>
   );
 }

@@ -36,7 +36,7 @@ export default function Header() {
     { text: 'Observatorio', path: '/observatorio' },
     { text: 'Instituciones', path: '/instituciones' },
     { text: 'Trámites', path: '/servicios' },
-    { text: 'Contacto', path: '/contacto' }
+    // { text: 'Contacto', path: '/contacto' }
   ];
 
   const socialLinks = [
@@ -79,11 +79,11 @@ export default function Header() {
                   alt="Logo Red Ciudadana"
                   style={{ width: 180, marginRight: '20px', height: 'auto'}}
                 />
-                <img
+                {/* <img
                   src={Logo}
                   alt="Logo Gobierno Digital"
                   style={{ width: 180, height: 'auto' }}
-                />
+                /> */}
               </Box>        
             </RouterLink>
 
