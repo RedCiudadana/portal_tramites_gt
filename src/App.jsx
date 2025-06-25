@@ -8,6 +8,7 @@ import Layout from './components/layout';
 import Home from './pages/home';
 import Servicios from './pages/servicios';
 import Instituciones from './pages/instituciones';
+import Observatorio from './pages/observatorio';
 
 import ChatBot from './components/chatbot';
 import Loader from './components/loader';
@@ -44,6 +45,7 @@ export default function App() {
                 <Route path="/institucion/:nombre" element={<Institucion />} />
                 <Route path="/" element={<Home />} />
                 <Route path="/servicios" element={<Servicios />} />
+                <Route path="/observatorio" element={<Observatorio />} />
               </Route>
             </Routes>
             <GoToTopButton />
