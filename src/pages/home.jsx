@@ -264,7 +264,7 @@ export default function Home() {
                           component={Link}
                           to={`/categoria/${destacados[0].categoria}/tramite/${destacados[0].id}`}
                         >
-                          Ir al trámite
+                          Ver trámite
                         </Button>
                       </Box>
                     </Box>
@@ -334,7 +334,7 @@ export default function Home() {
                           to={`/categoria/${tramite.categoria}/tramite/${tramite.id}`}
                           sx={{ width: 'fit-content', mt: 2 }}
                         >
-                          Ir al trámite
+                          Ver trámite
                         </Button>
 
                       </Box>
