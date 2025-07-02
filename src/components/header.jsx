@@ -101,7 +101,7 @@ export default function Header() {
                     fontSize: '1rem',
                     textDecoration: 'none',
                     '&:hover': {
-                      textDecoration: 'underline',
+                      color: '#0089df',
                     },
                   }}
                 >

@@ -72,8 +72,7 @@ export default function Categoria() {
 					<Container maxWidth="xl">
 							<Container maxWidth="lg">
 									<Typography
-											variant="h3"
-											component="h1"
+											variant="h4"
 											gutterBottom
 											sx={{ fontWeight: "bold", pb: 10 }}
 									>
@@ -129,7 +128,7 @@ export default function Categoria() {
 											<Grid size={{ xs: 6, sm: 12, md: 6 }} key={id}>
 												<Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', padding: 2 }}>
 													<CardContent sx={{ flexGrow: 1 }}>
-														<Typography variant="h6" fontWeight="bold" gutterBottom>
+														<Typography variant="h6" fontWeight="bold" gutterBottom sx={{ lineHeight: 1.2}}>
 															{nombre}
 														</Typography>
 														<Typography variant="body2" color="#02324f">
@@ -147,12 +146,13 @@ export default function Categoria() {
 																padding: '8px 20px',
 																fontWeight: 500,
 																boxShadow: 'none',
+																marginBottom: 1,
 																bgcolor: '#0089df',
 																'&:hover': { boxShadow: 'none' }
 															}}
 															to={`/categoria/${categoria}/tramite/${id}`}
 														>
-															Ver trámite
+															Ver Trámite
 														</Button>
 													</CardActions>
 												</Card>

@@ -9,6 +9,7 @@ import {
   Divider,
   Link as MuiLink,
 } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 
 import { Link as RouterLink } from 'react-router-dom';
 
@@ -21,6 +22,7 @@ import Icono5 from '../assets/iconos/tramite/ICONOS-49.png';
 import Icono6 from '../assets/iconos/tramite/ICONOS-46.png';
 
 const Tramite = () => {
+	const theme = useTheme();
 	const { id } = useParams();
 	const tramite = tramites.find((item) => item.id === Number(id));
 
@@ -35,7 +37,7 @@ const Tramite = () => {
 	}
 
 	return (
-		<Container maxWidth="xl" sx={{ mt: 6, mb: 6 }}>
+		<Container maxWidth="xl" sx={{ pt: 6, mb: 6, borderTop: '1px solid #ccc' }}>
 			<Typography variant="h4" fontWeight="bold" gutterBottom>
 				{tramite.nombre}
 			</Typography>
@@ -163,14 +165,12 @@ const Tramite = () => {
 					
 					{/* Repaldo Legal */}
 					<Box mt={2}>
-						<Typography variant="h6" gutterBottom sx={{ mb: -2 }}>
+						<Typography variant="h6" gutterBottom>
 							Respaldo legal
 						</Typography>
-						<Box
-							component="span"
-							dangerouslySetInnerHTML={{ __html: tramite.respaldo_legal }}
-							sx={{ ml: 0.5, '& p': { margin: 0 } }}
-						/>
+						<Typography variant="body2" color="#02324f">
+							{tramite.respaldo_legal}
+						</Typography>
 					</Box>
 
 					{/* Enlace oficial */}

@@ -49,8 +49,7 @@ export default function Instituciones() {
         <Container maxWidth="xl">
           <Container maxWidth="lg">
             <Typography
-              variant="h3"
-              component="h1"
+              variant="h4"
               gutterBottom
               sx={{ fontWeight: "bold", pb: 10,}}
             >

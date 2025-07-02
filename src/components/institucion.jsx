@@ -64,10 +64,9 @@ export default function Institucion() {
             >
                 <Container maxWidth="xl">
                     <Container maxWidth="lg">
-                        <img width={100} mb={2} src={InstitucionImg} />
+                        <img width={80} mb={2} src={InstitucionImg} />
                         <Typography
-                            variant="h3"
-                            component="h1"
+                            variant="h4"
                             gutterBottom
                             sx={{ fontWeight: "bold", pb: 10 }}
                         >
@@ -124,6 +123,8 @@ export default function Institucion() {
                                         fontWeight="bold"
                                         gutterBottom
                                         color="#02324f"
+                                        sx={{ lineHeight: 1.2 }}
+                                        marginTop={1}
                                     >
                                         {nombre}
                                     </Typography>
@@ -149,6 +150,7 @@ export default function Institucion() {
                                             fontWeight: 500,
                                             boxShadow: 'none',
                                             bgcolor: '#0089df',
+                                            marginBottom: 2,
                                             '&:hover': { boxShadow: 'none' }
                                         }}
                                     >

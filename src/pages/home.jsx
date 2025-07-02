@@ -87,7 +87,7 @@ export default function Home() {
         }}
       >
         <Container maxWidth="xl">
-          <Container maxWidth="lg">
+          <Container maxWidth="lg"  sx={{ mb: {xs: 0, md: -5}}}>
             <Typography
               variant="h3"
               component="h1"
@@ -106,7 +106,7 @@ export default function Home() {
             alt="Slider Image"
             style={{ width: "100%", height: "auto" }}
           />
-          <Container maxWidth="lg" sx={{ mt: {xs: 0, md: -10}, pb: 4 }}>
+          <Container maxWidth="lg" sx={{ mt: {xs: 0, md: -10}, pb: 7 }}>
             <Box
               component="form"
               onSubmit={handleSubmit}
@@ -129,6 +129,7 @@ export default function Home() {
                 variant="contained"
                 sx={{
                   width: { xs: "100%", sm: "20%", backgroundColor: "#0089DF" },
+                  textTransform: "Capitalize",
                 }}
               >
                 Buscar
@@ -221,7 +222,7 @@ export default function Home() {
             <Grid container spacing={3} size={{ xs: 12, sm: 12, md: 12 }}>
               {/* IZQUIERDA - Trámite principal */}
               {destacados[0] && (
-                <Grid item size={{ xs: 12, sm: 4, md: 4 }}>
+                <Grid item size={{ xs: 12, sm: 6, md: 6 }}>
                   <Box
                     sx={{
                       bgcolor: "white",
@@ -235,11 +236,11 @@ export default function Home() {
                     }}
                   >
                     {/* Icono o imagen del sector */}
-                    <Box sx={{ minWidth: 80 }}>{iconMap[destacados[0].categoria]}</Box>
+                    <Box sx={{ minWidth: 80, paddingTop: 6, paddingLeft: 6 }}>{iconMap[destacados[0].categoria]}</Box>
 
                     {/* Contenido */}
-                    <Box sx={{ display: "flex", flexDirection: "column", flex: 1 }}>
-                      <Typography variant="h6" fontWeight="bold" gutterBottom sx={{ lineHeight: 1.2 }}>
+                    <Box sx={{ display: "flex", flexDirection: "column", flex: 1, padding: 6 }}>
+                      <Typography variant="h4" fontWeight="bold" gutterBottom sx={{ lineHeight: 1.2 }}>
                         {destacados[0].nombre}
                       </Typography>
                       <Tooltip title={destacados[0].descripcion || 'Descripción no disponible...'} arrow>
@@ -263,8 +264,17 @@ export default function Home() {
                           size="small"
                           component={Link}
                           to={`/categoria/${destacados[0].categoria}/tramite/${destacados[0].id}`}
+                          sx={{
+                            textTransform: 'none',
+                            borderRadius: '15px',
+                            padding: '8px 20px',
+                            fontWeight: 500,
+                            boxShadow: 'none',
+                            bgcolor: '#0089df',
+                            '&:hover': { boxShadow: 'none' }
+                          }}
                         >
-                          Ver trámite
+                          Ver Trámite
                         </Button>
                       </Box>
                     </Box>
@@ -273,7 +283,7 @@ export default function Home() {
               )}
 
               {/* DERECHA - Otros 4 trámites en cuadrícula 2x2 con ícono al lado del título */}
-              <Grid item size={{ xs: 12, sm: 8, md: 8 }}>
+              <Grid item size={{ xs: 12, sm: 6, md: 6 }}>
                 <Grid container spacing={2}>
                   {destacados.slice(1, 5).map((tramite) => (
                     <Grid item size={{ xs: 12, sm: 6, md: 6 }} key={tramite.id}>
@@ -286,6 +296,7 @@ export default function Home() {
                           display: 'flex',
                           flexDirection: 'column',
                           height: '100%',
+                          minHeight: 220,
                         }}
                       >
                         {/* Título con ícono al lado */}
@@ -320,6 +331,8 @@ export default function Home() {
                               WebkitBoxOrient: 'vertical',
                               overflow: 'hidden',
                               textOverflow: 'ellipsis',
+                              mb: 2,
+                              flex: 1 // Esto empuja el botón hacia abajo
                             }}
                           >
                             {tramite.descripcion || 'Descripción no disponible...'}
@@ -332,11 +345,20 @@ export default function Home() {
                           size="small"
                           component={Link}
                           to={`/categoria/${tramite.categoria}/tramite/${tramite.id}`}
-                          sx={{ width: 'fit-content', mt: 2 }}
+                          sx={{
+                            textTransform: 'none',
+                            borderRadius: '15px',
+                            padding: '8px 20px',
+                            fontWeight: 500,
+                            boxShadow: 'none',
+                            bgcolor: '#0089df',
+                            width: 'fit-content',
+                            mt: 'auto', // Esto asegura que el botón quede abajo
+                            '&:hover': { boxShadow: 'none' }
+                          }}
                         >
-                          Ver trámite
+                          Ver Trámite
                         </Button>
-
                       </Box>
                     </Grid>
                   ))}
@@ -439,7 +461,7 @@ export default function Home() {
               style={{ height: 80, objectFit: "contain" }}
             />
           </Box>
-          <Typography variant="body1" color="#02324f" align="center" maxWidth={1000}>
+          <Typography variant="body2" color="#02324f" align="center" maxWidth={1300}>
             Enhancing Digital Government in Guatemala through European Standards" - Red Ciudadana, is one of the beneficiaries of a grant under the first Open Call under InDiCo-Global, which is a project funded as part of the European Union's Horizon Europe Research and Innovation Programme under Grant Agreement No 101136022. Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union. Neither the European Union nor the granting authority can be held responsible for them.
           </Typography>
         </Box>
